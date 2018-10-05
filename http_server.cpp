@@ -1,4 +1,4 @@
-#include <boost/asio/ip/tcp.hpp>
+﻿#include <boost/asio/ip/tcp.hpp>
 #include <boost/asio/signal_set.hpp>
 #include <boost/beast/core.hpp>
 #include <boost/beast/http.hpp>
@@ -143,7 +143,28 @@ protected:
         res.set(http::field::server, BOOST_BEAST_VERSION_STRING);
         res.set(http::field::content_type, "application/json");
         res.keep_alive(req.keep_alive());
-        res.body() = R"({"Hello, World"})";
+        const char* data = R"({
+          "response": {
+            "text": "Здравствуйте! Это мы, хороводоведы.",
+            "tts": "Здравствуйте! Это мы, хоров+одо в+еды.",
+            "buttons": [
+                {
+                    "title": "Надпись на кнопке",
+                    "payload": {},
+                    "url": "https://example.com/",
+                    "hide": true
+                }
+            ],
+            "end_session": false
+          },
+          "session": {
+            "session_id": "2eac4854-fce721f3-b845abba-20d60",
+            "message_id": 4,
+            "user_id": "AC9WC3DF6FCE052E45A4566A48E6B7193774B84814CE49A922E163B8B29881DC"
+          },
+          "version": "1.0"
+        })";
+        res.body() = data;
         res.prepare_payload();
         return res;
     }
