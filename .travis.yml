@@ -22,10 +22,10 @@ script:
   # - make
 after_success:
   - wget -qO- https://cli-assets.heroku.com/install.sh | sh
-  - heroku login -e $HEROKU_LOGIN -u $HEROKU_PASSWORD
   - docker login -e _ -u _ --password=$HEROKU_API_KEY registry.heroku.com
-  - heroku container:push web --app $HEROKU_APP_NAME
-  - heroku container:release web --app $HEROKU_APP_NAME
+  # - heroku login -e $HEROKU_LOGIN -u $HEROKU_PASSWORD
+  - heroku container:push web -a $HEROKU_APP_NAME
+  - heroku container:release web -a $HEROKU_APP_NAME
   
 notifications:
   email:
