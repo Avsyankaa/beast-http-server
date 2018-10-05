@@ -21,10 +21,11 @@ script:
   # - cmake ..
   # - make
 after_success:
-  - wget -qO- https://cli-assets.heroku.com/install.sh | sh
-  - set HEROKU_API_KEY $HEROKU_API_KEY
-  - heroku container:push web -a $HEROKU_APP_NAME
-  - heroku container:release web -a $HEROKU_APP_NAME
+  # - wget -qO- https://cli-assets.heroku.com/install.sh | sh
+  # - set HEROKU_API_KEY $HEROKU_API_KEY
+  - heroku container:login
+  - heroku container:push registry.heroku.com/$HEROKU_APP_NAME/web
+  - heroku container:release registry.heroku.com/$HEROKU_APP_NAME/web
   
 notifications:
   email:
