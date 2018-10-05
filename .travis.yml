@@ -16,6 +16,13 @@ addons:
 install:
 - "[ $CXX = g++ ] && export CXX=g++-7 || true"
 script:
+  - wget http://downloads.sourceforge.net/project/boost/boost/1.68.0/boost_1_68_0.tar.gz
+  - tar xfz boost_1_68_0.tar.gz
+  - rm boost_1_68_0.tar.gz
+  - cd boost_1_68_0
+  - ./bootstrap.sh --with-libraries=system > /dev/null 2>&1
+  - ./b2 install > /dev/null 2>&1
+  - cd ..
   - mkdir build
   - cd build
   - cmake ..
