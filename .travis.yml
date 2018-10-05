@@ -26,7 +26,7 @@ script:
   - cd boost_1_68_0
   - ./bootstrap.sh --with-libraries=system > /dev/null 2>&1
   - ./b2
-  - ./b2 install
+  - sudo ./b2 install
   - cd ..
   - mkdir build
   - cd build
