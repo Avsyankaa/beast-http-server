@@ -6,7 +6,6 @@ sudo: true
 language: cpp
 compiler:
   - gcc
-  - clang
 addons:
   apt:
     sources:
@@ -14,10 +13,8 @@ addons:
     - llvm-toolchain-precise-3.9
     packages:
     - g++-7
-    - clang-3.9
 install:
 - "[ $CXX = g++ ] && export CXX=g++-7 || true"
-- "[ $CXX = clang++ ] && export CXX=clang++-3.9 || true"
 script:
   - mkdir build
   - cd build
