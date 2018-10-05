@@ -4,8 +4,10 @@
 
 sudo: true
 language: cpp
+
 compiler:
   - gcc
+
 addons:
   apt:
     sources:
@@ -13,10 +15,12 @@ addons:
     - llvm-toolchain-precise-3.9
     packages:
     - g++-7
+
 install:
 - "[ $CXX = g++ ] && export CXX=g++-7 || true"
+
 script:
-  - wget http://downloads.sourceforge.net/project/boost/boost/1.68.0/boost_1_68_0.tar.gz
+  - wget http://downloads.sourceforge.net/project/boost/boost/1.68.0/boost_1_68_0.tar.gz > /dev/null 2>&1
   - tar xfz boost_1_68_0.tar.gz
   - rm boost_1_68_0.tar.gz
   - cd boost_1_68_0
@@ -28,6 +32,7 @@ script:
   - cmake ..
   - make
   - cd ..
+
 after_success:
   - heroku container:login
   - heroku container:push web -a $HEROKU_APP_NAME
