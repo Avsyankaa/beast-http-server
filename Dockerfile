@@ -13,8 +13,8 @@ RUN cd /home \
     && tar xfz boost_1_68_0.tar.gz \
     && rm boost_1_68_0.tar.gz \
     && cd boost_1_68_0 \
-    && ./bootstrap.sh --with-libraries=system \
-    && ./b2 install
+    && ./bootstrap.sh --with-libraries=system > /dev/null 2>&1 \
+    && ./b2 install > /dev/null 2>&1
 
 # Copy the entire project and build it
 COPY . /cpp/src/project/ 
@@ -31,4 +31,3 @@ RUN mkdir bin \
 CMD "/app/websocket-chat-server"
 
 EXPOSE 8080
-
