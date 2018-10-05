@@ -22,8 +22,13 @@ script:
   - mkdir build
   - cd build
   - cmake ..
-  - cmake --build .
-  - ctest
+  - make
+after_success:
+  - wget -qO- https://cli-assets.heroku.com/install.sh | sh
+  - docker login -e _ -u _ --password=$HEROKU_API_KEY registry.heroku.com
+  - heroku container:push web --app $HEROKU_APP_NAME
+  
 notifications:
   email:
+    on_failure: never
     on_success: never
