@@ -150,21 +150,16 @@ protected:
 };
 
 //------------------------------------------------------------------------------
-std::string getOSEnv(boost::string_view name, boost::string_view default)
+std::string getOSEnv(boost::string_view name, boost::string_view default_value)
 {
-#pragma push
-#ifdef _MSC_VER
-#pragma warning(disable : 4996)
-#endif
     const char* e = std::getenv(name.data());
-    return e ? e : default.data();
-#pragma pop
+    return e ? e : default_value.data();
 }
 
 int main(int /*argc*/, char** /*argv*/)
 {
     try {
-        auto const address = boost::asio::ip::make_address("127.0.0.1");
+        auto const address = boost::asio::ip::make_address("0.0.0.0");
         auto const port_arg = getOSEnv("PORT", "5000");
         auto const port = static_cast<unsigned short>(std::atoi(port_arg.c_str()));
         auto const doc_root = std::make_shared<std::string>("Hello world");
