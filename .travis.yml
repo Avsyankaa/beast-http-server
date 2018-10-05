@@ -25,7 +25,7 @@ script:
   - rm boost_1_68_0.tar.gz
   - cd boost_1_68_0
   - ./bootstrap.sh --with-libraries=system > /dev/null 2>&1
-  - ./b2 install
+  # - ./b2 install
   - cd ..
   - mkdir build
   - cd build
