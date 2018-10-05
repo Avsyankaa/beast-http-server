@@ -1,4 +1,4 @@
-FROM ubuntu:bionic AS build
+FROM ubuntu:bionic
 
 # Install tools required for the project
 RUN apt-get update \
@@ -20,13 +20,15 @@ RUN cd /home \
 COPY . /cpp/src/project/ 
 WORKDIR /cpp/src/project/
 
-RUN cmake -Bbin -H. && cmake --build bin
+RUN mkdir bin \
+ && cd bin \
+ && cmake .. \
+ && make \
+ && ls -al \
+ && mkdir /app \
+ && cp websocket-chat-server /app
 
-FROM ubuntu:bionic 
-COPY --from=build /cpp/src/project/bin/websocket-chat-server /app/
-COPY --from=build /cpp/src/project/chat_client.html /app/wwwroot/index.html
-
-ENTRYPOINT ["/app/websocket-chat-server", "0.0.0.0", "8080", "/app/wwwroot"]
+CMD "/app/websocket-chat-server"
 
 EXPOSE 8080
 
