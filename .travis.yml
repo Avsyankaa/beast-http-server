@@ -24,8 +24,8 @@ after_success:
   - wget -qO- https://cli-assets.heroku.com/install.sh | sh
   - heroku login -e $HEROKU_LOGIN -u $HEROKU_PASSWORD
   - docker login -e _ -u _ --password=$HEROKU_API_KEY registry.heroku.com
-  - heroku container:push web --app $HEROKU_APP_NAME --password=$HEROKU_API_KEY
-  - heroku container:release web --app $HEROKU_APP_NAME --password=$HEROKU_API_KEY
+  - heroku container:push web --app $HEROKU_APP_NAME
+  - heroku container:release web --app $HEROKU_APP_NAME
   
 notifications:
   email:
