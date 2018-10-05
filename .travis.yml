@@ -17,13 +17,11 @@ install:
 - "[ $CXX = g++ ] && export CXX=g++-7 || true"
 script:
   - mkdir build
-  # - cd build
-  # - cmake ..
-  # - make
+  - cd build
+  - cmake ..
+  - make
+  - cd ..
 after_success:
-  # - wget -qO- https://cli-assets.heroku.com/install.sh | sh
-  # - set HEROKU_API_KEY $HEROKU_API_KEY
-  - heroku login
   - heroku container:login
   - heroku container:push web -a $HEROKU_APP_NAME
   - heroku container:release web -a $HEROKU_APP_NAME
