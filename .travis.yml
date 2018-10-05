@@ -17,7 +17,7 @@ install:
 - "[ $CXX = g++ ] && export CXX=g++-7 || true"
 script:
   - mkdir build
-  - cd build
+  # - cd build
   # - cmake ..
   # - make
 after_success:
