@@ -207,6 +207,7 @@ int main(int /*argc*/, char** /*argv*/)
         auto const address = boost::asio::ip::make_address("0.0.0.0");
         auto const port_arg = getOSEnv("PORT", "5000");
         auto const port = static_cast<unsigned short>(std::atoi(port_arg.c_str()));
+        auto const doc_root = std::make_shared<std::string>(".");
 
         // The io_context is required for all I/O
 		boost::asio::io_context ioc{ 1 };
