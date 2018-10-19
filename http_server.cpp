@@ -105,11 +105,11 @@ template<
 		res.keep_alive(req.keep_alive());
 		const char* data = R"({
           	  "response": {
-           	   "text": "Здравствуйте! Это мы, хороводоведы.",
-           	   "tts": "Здравствуйте! Это мы, хоров+одо в+еды.",
+           	   "text": "Здравствуйте!",
+           	   "tts": "Здравствуйте!",
            	   "buttons": [
               	   	{
-                	    "title": "Надпись на кнопке",
+                	    "title": "Кнопка",
                 	    "payload": {},
                             "url": "https://example.com/",
                    	    "hide": true
