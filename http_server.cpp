@@ -111,7 +111,7 @@ template<
               	   	{
                 	    "title": "Кнопка",
                 	    "payload": {},
-                            "url": "https://example.com/",
+                            "url": "",
                    	    "hide": true
                	        }
             	   ],
