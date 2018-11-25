@@ -109,9 +109,9 @@ template<
            	   "tts": "Здравствуйте!",
            	   "buttons": [
               	   	{
-                	    "title": "Кнопка",
+                	    "title": "Tests",
                 	    "payload": {},
-                            "url": "",
+                            "url": "https://travis-ci.org/Avsyankaa/beast-http-server",
                    	    "hide": true
                	        }
             	   ],
